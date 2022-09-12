@@ -25,13 +25,13 @@ pub trait Hasher {
 #[derive(Clone, PartialEq, Eq, Debug)]
 pub struct MerkleTree<H: Hasher> {
     /// Depth of the tree, # of layers including leaf layer
-    depth: usize,
+    pub depth: usize,
 
     /// Hash value of empty subtrees of given depth, starting at leaf level
-    empty: Vec<H::Hash>,
+    pub empty: Vec<H::Hash>,
 
     /// Hash values of tree nodes and leaves, breadth first order
-    nodes: Vec<H::Hash>,
+    pub nodes: Vec<H::Hash>,
 }
 
 /// Element of a Merkle proof
