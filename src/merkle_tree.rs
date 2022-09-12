@@ -11,6 +11,7 @@ use std::{
     iter::{once, repeat, successors},
 };
 
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 /// Hash types, values and algorithms for a Merkle tree
 pub trait Hasher {
     /// Type of the leaf and node hashes
@@ -22,7 +23,7 @@ pub trait Hasher {
 
 /// Merkle tree with all leaf and intermediate hashes stored
 #[allow(clippy::derive_partial_eq_without_eq)] // False positive
-#[derive(Clone, PartialEq, Eq, Debug)]
+#[derive(Clone, PartialEq, Eq, Debug, BorshDeserialize, BorshSerialize)]
 pub struct MerkleTree<H: Hasher> {
     /// Depth of the tree, # of layers including leaf layer
     depth: usize,
@@ -36,7 +37,7 @@ pub struct MerkleTree<H: Hasher> {
 
 /// Element of a Merkle proof
 #[allow(clippy::derive_partial_eq_without_eq)] // False positive
-#[derive(Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Serialize, Deserialize, BorshDeserialize, BorshSerialize)]
 pub enum Branch<H: Hasher> {
     /// Left branch taken, value is the right sibling hash.
     Left(H::Hash),

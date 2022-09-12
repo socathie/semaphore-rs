@@ -48,6 +48,7 @@ sha2 = "0.10.1"
 thiserror = "1.0.0"
 tiny-keccak = { version = "2.0.2" }
 getrandom = { version = "0.2", features = ["js"] }
+near-sdk = "4.0.0"
 
 # Use the same `ethers-core` version as ark-circom
 # TODO: Remove

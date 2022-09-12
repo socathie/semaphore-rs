@@ -3,6 +3,7 @@ use crate::{
     poseidon, Field,
 };
 use serde::{Deserialize, Serialize};
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 
 #[allow(dead_code)]
 pub type PoseidonTree = MerkleTree<PoseidonHash>;
@@ -11,7 +12,7 @@ pub type Branch = merkle_tree::Branch<PoseidonHash>;
 #[allow(dead_code)]
 pub type Proof = merkle_tree::Proof<PoseidonHash>;
 
-#[derive(Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Serialize, Deserialize, BorshDeserialize, BorshSerialize)]
 pub struct PoseidonHash;
 
 impl Hasher for PoseidonHash {
